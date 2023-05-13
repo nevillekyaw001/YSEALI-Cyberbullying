@@ -4,12 +4,13 @@ using UnityEngine.EventSystems;
 
 public class Posing : MonoBehaviour
 {
-    [SerializeField] Button PoseButton;
-    [SerializeField] GameObject ChangePoseButton;
+    [SerializeField] Button poseButton;
+    [SerializeField] GameObject changePoseButton;
 
     public int numberOfPose = 4;
+    public float decreasedSpeed = 0.5f;
 
-    int increaseAmount = 3;
+    int increaseAmount = 1;
     public bool isPressed;
 
     [SerializeField] Slider flexomenter;
@@ -20,24 +21,26 @@ public class Posing : MonoBehaviour
 
     private void Start()
     {
-        ChangePoseButton.SetActive(false);
+        changePoseButton.SetActive(false);
     }
     void Update()
     {
-        if (!isPressed) return;
+        if (!isPressed && flexomenter.value > 0) 
+        {
+            flexomenter.value = flexomenter.value - decreasedSpeed;
+        }
         else
         {
             flexomenter.value++;
         }
 
-        if(flexomenter.value < 1000)
+        if(flexomenter.value < 800)
         {
-            ChangePoseButton.SetActive(false);
+            changePoseButton.SetActive(false);
         }
         else if(flexomenter.value >= 1000)
         {
-            ChangePoseButton.SetActive(true);
-            PoseButton.interactable = false;
+            changePoseButton.SetActive(true);
         }
 
     }
@@ -49,11 +52,7 @@ public class Posing : MonoBehaviour
 
     public void ChangePose()
     {
-        flexomenter.value = 0;
         progressBar.value += increaseAmount;
-        PoseButton.interactable = true;
-        ChangePoseButton.SetActive(false);
-
     }
 
     public void FinishPosing()

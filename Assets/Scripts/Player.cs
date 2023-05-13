@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    Vector3 targetPos;
+
+    [SerializeField] float groundLevel;
     [SerializeField] float moveSpeed;
     Rigidbody2D rb;
 
@@ -21,8 +24,13 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        Vector2 dir = new Vector2(horizontal, 0);
-        rb.AddForce(dir);
+        if(Input.GetMouseButtonDown(0))
+        {
+            targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            targetPos.z = transform.position.z;
+            targetPos.y = groundLevel;
+        }
+
+        transform.position = Vector3.MoveTowards(transform.position,targetPos, moveSpeed * Time.deltaTime);
     }
 }
