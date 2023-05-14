@@ -9,9 +9,12 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI nameComponent;
     public TextMeshProUGUI subtitleComponent;
 
+    public GameObject closeCurrentEvents;
+    public nextScene nS;
+    public GameObject nextMiniGameEvent;
+
     public string[] names;
     public string[] lines;
-    public string newName;
     public float textSpeed;
     int index;
 
@@ -76,7 +79,17 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+            if (nS)
+            {
+                nS.NextScene();
+            }
+            if (nextMiniGameEvent)
+            {
+                nextMiniGameEvent.SetActive(true);
+
+            }
+            closeCurrentEvents.SetActive(false);
+
         }
     }
 

@@ -6,9 +6,12 @@ public class Posing : MonoBehaviour
 {
     [SerializeField] Button poseButton;
     [SerializeField] GameObject changePoseButton;
+    [SerializeField] Sprite[] sprites;
+    [SerializeField] SpriteRenderer sr;
 
     public int numberOfPose = 4;
     public float decreasedSpeed = 0.5f;
+    int index = 0;
 
     int increaseAmount = 1;
     public bool isPressed;
@@ -52,7 +55,14 @@ public class Posing : MonoBehaviour
 
     public void ChangePose()
     {
+        index++;
         progressBar.value += increaseAmount;
+        sr.sprite = sprites[index];
+
+        if(index >= 2)
+        { 
+            index = 0;
+        }
     }
 
     public void FinishPosing()

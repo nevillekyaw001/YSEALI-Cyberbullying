@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Clicks
   - Brush
+  - drag
   layers:
   - Default
   - TransparentFX
