@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class MusicNoteSpawner : MonoBehaviour
 {
     [SerializeField] GameObject[] musicNotes;
-    [SerializeField] GameObject[] DialogueEvents;
-    [SerializeField] GameObject[] miniGameEvents;
+    [SerializeField] GameObject DialogueEvents;
+    [SerializeField] GameObject miniGameEvents;
+    [SerializeField] nextScene nS;
+
 
     [SerializeField] float timeInterval;
     [SerializeField] int noteAmount;
@@ -20,6 +22,7 @@ public class MusicNoteSpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(WaitForStart());
+        Pla
     }
 
     void Update()
@@ -53,9 +56,19 @@ public class MusicNoteSpawner : MonoBehaviour
 
     IEnumerator WaitForFinish() 
     {
+        
         yield return new WaitForSeconds(1f);
-        DialogueEvents[0].SetActive(true);
-        miniGameEvents[0].SetActive(false);
+        if (DialogueEvents)
+        {
+            DialogueEvents.SetActive(true);
+
+        }
+
+        if (miniGameEvents)
+        {
+            miniGameEvents.SetActive(false);
+        }
+
     }
 
     IEnumerator MusicNoteWave()

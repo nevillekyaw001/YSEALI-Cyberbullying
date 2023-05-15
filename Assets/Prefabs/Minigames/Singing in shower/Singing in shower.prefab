@@ -373,10 +373,11 @@ MonoBehaviour:
   - {fileID: 5467096286785901555, guid: 19324a046d266ee4a91cf9cc328549cf, type: 3}
   - {fileID: 5313436263536382048, guid: 25606fbacf38ec54aaff716c56fd7b45, type: 3}
   - {fileID: 2251828274107666718, guid: 145f94e32da0e8f479ed9ee18426b847, type: 3}
-  DialogueEvents: []
-  miniGameEvents: []
+  DialogueEvents: {fileID: 0}
+  miniGameEvents: {fileID: 1831975671096653429}
+  nS: {fileID: 0}
   timeInterval: 1
-  noteAmount: 3
+  noteAmount: 5
   index: 0
   progressBar: {fileID: 1831975672347645906}
   angles: 4b0000005a00000069000000
@@ -464,7 +465,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 3
+  m_MaxValue: 5
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -542,7 +543,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 1545294801, guid: 577587e099d6595438d3c609f2a7378a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -626,7 +627,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c65085dcd6b75804fb0c5ce08074a7f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

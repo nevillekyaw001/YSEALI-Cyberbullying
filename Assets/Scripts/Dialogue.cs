@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Dialogue : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Dialogue : MonoBehaviour
     public GameObject closeCurrentEvents;
     public nextScene nS;
     public GameObject nextMiniGameEvent;
+
+    [SerializeField] int sceneNumber;
 
     public string[] names;
     public string[] lines;
@@ -57,6 +60,8 @@ public class Dialogue : MonoBehaviour
             {
                 nameText.SetActive(true);
             }
+
+            
         }
     }
 
@@ -65,6 +70,11 @@ public class Dialogue : MonoBehaviour
         index= 0;
         nameComponent.text = names[index];
         StartCoroutine(TypeLine());
+
+        if (SceneManager.GetActiveScene().buildIndex == sceneNumber)
+        {
+            AudioManager.instance.Play(0);
+        }
     }
 
     private void NextLine()

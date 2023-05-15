@@ -8,7 +8,11 @@ using UnityEngine.UI;
 public class Studying : MonoBehaviour
 {   Camera m_camera;
     public GameObject brush;
+     GameObject[] brushes;
     GameObject[] numberOfBrushes;
+    [SerializeField] int numberlines;
+    public GameObject studying;
+    public GameObject nextDialogue;
     public Slider progressBar;
     float conversionfloat;
 
@@ -19,6 +23,7 @@ public class Studying : MonoBehaviour
     private void Start()
     {
         m_camera = Camera.main;
+        AudioManager.instance.Play(1);
     }
     private void Update()
     {
@@ -26,6 +31,11 @@ public class Studying : MonoBehaviour
         numberOfBrushes = GameObject.FindGameObjectsWithTag("Brush");
 
         progressBar.value = numberOfBrushes.Length;
+
+        if(progressBar.value >= numberlines)
+        {
+            FinishStudying();
+        }
     }
 
     public void Drawing()
@@ -71,6 +81,25 @@ public class Studying : MonoBehaviour
         {
             AddAPoint(mousePos);
             lastPos = mousePos;
+        }
+    }
+
+    void FinishStudying()
+    {
+        
+        brushes = GameObject.FindGameObjectsWithTag("Brush");
+        for (int i = 0; i < brushes.Length; i++)
+        {
+            Destroy(brushes[i].gameObject);
+        }
+        if (nextDialogue)
+        {
+            nextDialogue.SetActive(true);
+        }
+
+        if (studying)
+        {
+            studying.SetActive(false);
         }
     }
 

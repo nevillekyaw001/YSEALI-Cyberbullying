@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScrollingMeme : MonoBehaviour
@@ -48,8 +49,8 @@ public class ScrollingMeme : MonoBehaviour
 
     IEnumerator WaitForFinish()
     {
-        yield return new WaitForSeconds(1f);
-        DialogueEvents[0].SetActive(true);
-        miniGameEvents[0].SetActive(false);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(0);
+
     }
 }
